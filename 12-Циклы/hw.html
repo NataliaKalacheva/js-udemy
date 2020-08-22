@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>HW</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+
+        <script>
+            //1 На основе строки “i am in the easycode” сделать новую строку где первые буквы каждого слова будут в верхнем регистре. Использовать for или while.
+
+            var string = 'i am in the easycode';
+            var newString ='';
+
+            for (var i=0; i < string.length; i++) {
+               if (string[i-1] === ' ') {
+                  newString +=string[i].toUpperCase();
+               } else if (i === 0) {
+                  newString +=string[i].toUpperCase();
+                }
+               else {
+                newString += string[i];
+               }
+            }
+            console.log(newString);
+
+            //2  Дана строка “tseb eht ma i”. Используя циклы, сделать строку-перевертыш (то есть последняя буква становится первой, предпоследняя - второй итд).
+            var string = 'tseb eht ma i';
+            var reverseString = '';
+
+            for (var i=string.length-1; i >= 0; i--) {
+                reverseString+=string[i];
+            }
+            console.log(reverseString);
+
+            //3 Факториал числа - произведение всех натуральных чисел от 1 до n включительно: 3! = 3*2*1, 5! = 5*4*3*2*1. С помощью циклов вычислить факториал числа 10. Использовать for.
+            let value = 1;
+            let number = 10;
+            for (var j=number; j > 1; j--) {
+                value*=j;
+            }
+            console.log(value);
+
+            //4  На основе строки “JavaScript is a pretty good language” сделать новую строку, где каждое слово начинается с большой буквы, а пробелы удалены. Использовать for.
+
+            let sourceString = 'JavaScript is a pretty good language';
+            let changedString ='';
+
+            for (var i=0; i < sourceString.length; i++) {
+               if (sourceString[i-1] === ' ') {
+                changedString +=sourceString[i].toUpperCase();
+                changedString = changedString.replace(' ', '');
+               } else if (i === 0) {
+                changedString +=sourceString[i].toUpperCase();
+                }
+               else {
+                changedString += sourceString[i];
+               }
+            }
+            console.log(changedString);
+            //5 Найти все нечетные числа в массиве от 1 до 15 включительно и вывести их в консоль. Массив [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] Использовать for of.
+
+            let sourceArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+            for (let value of sourceArray) {
+                if (value % 2) {
+                    console.log(value);
+                }
+            }
+
+            // 6 Дан объект:
+let list = {
+     name: 'denis',
+     work: 'easycode',
+     age: 29
+}
+
+// Перебрать объект и если значение в свойстве это строка то переписать ее всю в верхнем регистре. Использовать for in.
+
+for (let item in list) {
+    if (typeof list[item] === 'string') {
+        list[item] = list[item].toUpperCase();
+    }
+}
+console.log(list);
+
+        </script>
+    </body>
+</html>

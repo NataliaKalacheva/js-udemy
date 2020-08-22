@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="person">
+      <input name="name" value="Виктор" />
+      <input name="surname" value="Цой" />
+    </form>
+    <button>submit</button>
+    <script>
+      var btn = document.querySelector("button");
+
+      btn.addEventListener("click", function() {
+        var formData = new FormData(document.forms.person);
+        formData.append("patronym", "Робертович");
+
+        // отослать
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://jsonplaceholder.typicode.com/users", true);
+        xhr.send(formData);
+      });
+
+      // добавить к пересылке ещё пару ключ - значение
+    </script>
+  </body>
+</html>

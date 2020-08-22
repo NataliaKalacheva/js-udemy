@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <article>
+        <p>
+          Lorem ipsum dolor sit amet, odio omnesque ius cu, quo ex atqui
+          antiopam. At detracto menandri eos. Duo in causae viderer, graeci
+          <a href="#">reprehendunt</a> has in. Decore
+          <mark>nemore</mark> philosophia te pro, nobis legere causae ex mei,
+          odio putant mentitum ea ius. Vix nostro deserunt explicari eu.
+        </p>
+      </article>
+    </div>
+    <ul>
+      <li><a href="#">Link1</a></li>
+      <li><a href="#">Link2</a></li>
+      <li><a href="#">Link3</a></li>
+      <li><a href="#">Link4</a></li>
+    </ul>
+    <span></span>
+    <a href="#">Some link</a>
+    <div class="parent-1">
+      <div class="parent-2">
+        <div class="parent-3">
+          <span class="child"></span>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      //1 Создать функцию, которая принимает два элемента. Функция проверяет, является ли первый элемент родителем для второго
+
+      // СПОСОБ 1
+      // function isParent(parent, child) {
+      //   return parent === child.parentElement; //ищет только прямого родителя
+      // }
+
+      // console.log(
+      //   isParent(
+      //     document.querySelector(".parent-3"),
+      //     document.querySelector(".child")
+      //   )
+      // );
+
+      // СПОСОБ 2
+
+      // function isDomEl(el) {
+      //   return el instanceof Element || el instanceof HTMLDocument;  
+      // }
+
+      // function isParent(parent, child) {
+      //   if (isDomEl(parent) && isDomEl(child)) {
+      //     let curentParent = child.parentElement;
+      //     let isParent = false;
+
+      //     while (curentParent) {
+      //       isParent = parent === curentParent;
+      //       if (isParent) {
+      //         curentParent = null;
+      //       } else {
+      //         curentParent = curentParent.parentElement;
+      //       }
+      //     }
+      //     return isParent;
+      //   }
+      // }
+
+      // console.log(isParent(document.body.children[0], document.querySelector('mark')));
+      // console.log(isParent(document.querySelector('ul'), document.querySelector('mark')));
+
+      // console.log(
+      //   isParent(document.querySelector("a"), document.querySelector(".child"))
+      // );
+
+      //   let checkElement = function(firstEl, secondEl) {
+      //     var children = firstEl.children; //псевдомассив с детьми
+
+      //     for (var i = 0; i < children.length; i++) {
+      //       if (children[i] === secondEl) {
+      //         return true;
+      //         break;
+      //       }
+      //     }
+      //     return false;
+      //   };
+
+      // function checkElement(parent, child) {
+      //   return child.parentNode === parent;
+      // }
+
+      // console.log(
+      //   checkElement(document.querySelector("div"), document.querySelector("p"))
+      // );
+      // console.log(
+      //   checkElement(document.querySelector("ul"), document.querySelector("li"))
+      // );
+
+      //2 Получить список всех ссылок, которые не находятся внутри списка ul
+
+      // let links = Array.from(document.links).filter(
+      //   link => !link.closest("ul")
+      // );
+      // console.log(links);
+
+      // //3 Найти элемент, который находится перед и после списка ul
+
+      // let prev = document.querySelector("ul").previousElementSibling;
+      // console.log(prev);
+      // let next = document.querySelector("ul").nextElementSibling;
+      // console.log(next);
+
+      //5. *В коде с занятия написать функцию по редактированию задачи.
+
+      // 6. *Подумать и улучшить функцию generateId();
+    </script>
+  </body>
+</html>

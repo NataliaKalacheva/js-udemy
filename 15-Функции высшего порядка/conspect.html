@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function foo() {
+      //   console.log("Hello world");
+      // }
+      // foo();
+
+      // foo.field = "Denis";
+
+      // console.log(foo.field); //'Denis'
+
+      //Функции высшего порядка — это функции, которые принимают в качестве аргументов другие функции, либо возвращают функцию. А также могут делать оба действия одновременно.
+
+      // map() - возвращает новый массив, состоящий из результатов вызова нашей функции(для сокращения кол-ва кода)
+
+      // const arr = ["Denis", "Natasha", "Gosha", "Olga"];
+      //=> [5, 7, 5, 4];
+
+      // let newArr = [];
+      // for (let i = 0; i < arr.length; i++) {
+      //   newArr.push(arr[i].length); //новый массив, сост. из длины каждого эл-та массив arr
+      // }
+
+      // console.log(newArr);
+
+      //теперь заказчик просит выводить всех апперкейсом в отдельном массиве.
+
+      // let newArr2 = [];
+      // for (let i = 0; i < arr.length; i++) {
+      //   newArr2.push(arr[i].toUpperCase()); //новый массив, сост. из длины каждого эл-та массив arr
+      // }
+
+      // console.log(newArr2);
+
+      //  Приходится копипастить! Хотя нужно выполнять разные действия с одним элементом массива!
+      // Перепишем все на функцию высшего порядка
+      const names = ["Denis", "Natasha", "Gosha", "Olga"];
+
+      function mapArray(arr, fn) {
+        //новая ФВП принимает на вход массив и функцию
+        const res = []; // результат записываем в новый массив
+        for (var i = 0; i < arr.length; i++) {
+          // перебираем полученный массив
+          res.push(fn(arr[i])); // в результат пушим результат переданной функции с элементом переданного массива
+        }
+        return res;
+      }
+
+      function nameLength(el) {
+        // console.log(el.length);
+        return el.length;
+      }
+
+      function nameToUppercase(el) {
+        return el.toUpperCase();
+      }
+
+      const result = mapArray(names, nameLength);
+      // console.log(result);
+      const result2 = mapArray(names, nameToUppercase);
+      // console.log(result2);
+
+      function greeting(firstName) {
+        return function(lastName) {
+          return `Hello, ${firstName} ${lastName}`;
+        };
+      }
+
+      // const testGreeting = greeting("Gosha");
+
+      // const fullName = testGreeting("Isaev");
+
+      const fullName = greeting("Gosha")("Isaev");
+      //console.log(fullName);
+
+      // function question(job) {
+      //   if (job === "developer") {
+      //     return function(name) {
+      //       return `${name}, что такое JavaScript?`;
+      //     };
+      //   } else if (job === "teacher") {
+      //     return function(name) {
+      //       return `${name}, какой предмет вы ведете?`;
+      //     };
+      //   }
+      // }
+
+      // const developerQuestion = question("developer");
+      // const teacherQuestion = question("teacher");
+      // console.log(developerQuestion("Tata"));
+      // console.log(teacherQuestion("Sveta"));
+
+      //чтобы не делать много условий и сократить код можем сделать объект - словарь . ключ - работа, значение - вопрос.
+      function question(job) {
+        const jobDictionary = {
+          developer: "что такое JS?",
+          teacher: "какой предмет вы ведете?",
+          hr: "кого подбираете?",
+          marketolog: "что продвигаете?"
+        };
+        return function(name) {
+          return `${name}, ${jobDictionary[job]}`;
+        };
+      }
+
+      console.log(question("hr")("Tata"));
+
+      function doWithLoading(fn) {
+        console.log("start loading");
+        let returnValue = fn();
+        console.log("finish loading");
+        return returnValue;
+      }
+
+      function process() {
+        console.log("loading...");
+      }
+
+      doWithLoading(process);
+
+      // function formalGreeting() {
+      //   console.log("How are you?");
+      // }
+
+      // function casualGreeting() {
+      //   console.log("What`s up?");
+      // }
+
+      // function greet(type, greetFormal, greetCasual) {
+      //   if (type === "formal") {
+      //     return greetFormal;
+      //   } else if (type === "casual") {
+      //     return greetCasual;
+      //   }
+      // }
+
+      // greet("casual", formalGreeting(), casualGreeting());
+      //
+
+      //без ФВП
+      // const arr1 = [1, 2, 3, 4];
+      // const arr2 = [];
+
+      // for (let i = 0; i < arr1.length; i++) {
+      //   arr2.push(arr1[i] * 2);
+      // }
+
+      // console.log(arr2);
+
+      // c ФВП
+
+      const arr1 = [1, 2, 3, 4, 5];
+      const arr2 = arr1.map(function(item) {
+        //метод map принимает на вход функцию и изменяет каждый элемент массива согласно этой функции
+        return item * 2;
+      });
+      console.log(arr2);
+
+      // const arr1 = [1, 2, 3, 4];
+      // const arr2 = arr1.map(item => item * 2); // c функцией стрелочных функций
+      // console.log(arr2);
+
+      const birthYear = [1975, 1995, 1989, 1997];
+      const ages = birthYear.map(year => 2018 - year);
+
+      console.log(ages);
+
+      //filter();
+
+      const persons = [
+        { name: "Peter", age: 16, job: "student" },
+        { name: "David", age: 45, job: "seller" },
+        { name: "Goshan", age: 31, job: "developer" },
+        { name: "Tata", age: 24, job: "hr" },
+        { name: "Lena", age: 11, job: "student" }
+      ];
+      const fullAge = persons.filter(person => person.age >= 18);
+      console.log(fullAge);
+      const personsNames = fullAge.map(function(item) {
+        return item.name;
+      });
+      console.log(names);
+    </script>
+  </body>
+</html>

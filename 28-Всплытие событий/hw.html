@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn-msg" data-text="”Custom" message”>Show message</button>
+    <button id="btn-generate">Generate item</button>
+    <p><strong id="tag">Tag:</strong></p>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ul>
+    <script>
+      //1 По нажатию на кнопку "btn-msg" должен появиться алерт с тем текстом который находится в атрибуте data-text у кнопки.
+      let btnMsg = document.querySelector("#btn-msg");
+      btnMsg.addEventListener("click", function() {
+        alert(btnMsg.dataset.text);
+      });
+
+      //2 При наведении указателя мыши на "btn-msg", кнопка становится красной; когда указатель мыши покидает кнопку, она становится прежнего цвета. Цвет менять можно через добавление класса.
+
+      btnMsg.addEventListener("mouseover", function() {
+        btnMsg.style = "background: red";
+      });
+
+      btnMsg.addEventListener("mouseout", function() {
+        btnMsg.style = null;
+      });
+
+      //3 При нажатии на любой узел документа показать в элементе с id=tag имя тега нажатого элемента.
+
+      document.body.addEventListener(
+        "click",
+        event =>
+          (document.querySelector("#tag").innerText = event.target.tagName)
+      );
+
+      //4 При нажатии на кнопку btn-generate добавлять в список ul элемент списка Li с текстом Item + порядковый номер Li по списку, т.е Item 3, Item 4 и т.д
+
+      document
+        .querySelector("#btn-generate")
+        .addEventListener("click", function() {
+          let list = document.querySelector("ul");
+          let newEl = document.createElement("li");
+          newEl.textContent = "Item " + (list.children.length + 1);
+          list.appendChild(newEl);
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getValue(arr, fnc) {
+        var newValue = "New value: " + fnc(arr);
+        console.log(newValue);
+        return newValue;
+      }
+
+      function handler1(arr) {
+        return arr
+          .map(word => word[0].toUpperCase() + word.substring(1))
+          .join("");
+      }
+
+      function handler2(arr) {
+        return arr.map(item => item * 10);
+      }
+
+      function handler3(arr) {}
+
+      getValue(["my", "name", "is", "Trinity"], handler1);
+
+      getValue([10, 20, 30], handler2);
+
+      //getValue([{age: 45, name: 'Jhon'}, {age: 20, name: 'Aaron'}], handler3);
+    </script>
+  </body>
+</html>
